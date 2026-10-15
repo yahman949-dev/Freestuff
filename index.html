@@ -3,264 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Get Your Free Surprise Samples Box!</title>
+    <title>Claim Your Free Sample Box</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&display=swap');
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at center, #ffffff 0%, #eef2f3 100%);
+            background-color: #f4f4f4;
             height: 100vh;
-            width: 100vw;
-            overflow: hidden; /* Prevents scrolling */
             display: flex;
             justify-content: center;
             align-items: center;
-            position: relative;
+            overflow: hidden;
         }
 
-        /* Confetti Canvas */
-        #confetti {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .landing-container {
-            background: #ffffff;
-            width: 90%;
-            max-width: 450px;
-            padding: 2.5rem 1.5rem;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        .main-card {
+            background: #fff;
+            width: 95%;
+            max-width: 420px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             text-align: center;
-            z-index: 10;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: slideUpFade 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            padding: 20px;
+            border-top: 6px solid #e74c3c;
         }
 
-        .scarcity-badge {
-            display: inline-block;
-            background: #ffe5e5;
-            color: #d63031;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 1.2rem;
-            animation: blink 2s infinite;
+        .alert-bar {
+            background: #fff3cd;
+            color: #856404;
+            padding: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            border: 1px solid #ffeeba;
+            animation: pulse-bg 2s infinite;
         }
 
         h1 {
-            font-size: 2rem;
-            color: #2d3436;
+            font-size: 24px;
+            color: #222;
+            font-weight: 900;
+            margin-bottom: 5px;
             line-height: 1.2;
-            margin-bottom: 0.5rem;
-            font-weight: 800;
         }
 
         h1 span {
-            color: #d63031; /* Red from the original offer image */
+            color: #e74c3c;
         }
 
-        p.subtitle {
-            color: #636e72;
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
+        .subtitle {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
 
-        /* SVG Gift Box with Float Animation */
-        .gift-box-container {
-            margin: 1.5rem 0 2.5rem 0;
-            filter: drop-shadow(0 15px 15px rgba(0,0,0,0.2));
-            animation: float 3.5s ease-in-out infinite;
-        }
-
+        /* SVG Gift Box */
         .gift-svg {
-            width: 140px;
+            width: 120px;
             height: auto;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.15));
+            animation: float 3s ease-in-out infinite;
         }
 
-        /* High-Converting CTA Button */
-        .cta-btn {
+        /* Form Area */
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-label {
             display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="tel"] {
             width: 100%;
-            background: linear-gradient(135deg, #fbc531, #e1b12c); /* Gold/Yellow button */
-            color: #2d3436;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 800;
-            padding: 1.2rem 1rem;
-            border-radius: 50px;
+            padding: 15px;
+            font-size: 20px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-weight: 700;
+            letter-spacing: 2px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="tel"]:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        }
+
+        .cta-btn {
+            width: 100%;
+            background: #27ae60;
+            color: white;
+            font-size: 20px;
+            font-weight: 900;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(225, 177, 44, 0.4);
-            transition: all 0.3s ease;
-            animation: pulse 1.5s infinite;
+            box-shadow: 0 5px 0 #1e8449;
+            transition: all 0.1s;
+            animation: button-pulse 1.5s infinite;
         }
 
         .cta-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 5px 10px rgba(225, 177, 44, 0.4);
+            transform: translateY(5px);
+            box-shadow: 0 0 0 #1e8449;
         }
 
-        .secure-text {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: #b2bec3;
+        /* Processing Screen Area */
+        #step2 {
+            display: none;
+            padding: 20px 0;
+        }
+
+        .spinner {
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        .processing-text {
+            font-size: 18px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .check-list {
+            text-align: left;
+            width: 80%;
+            margin: 0 auto;
+            font-size: 14px;
+            color: #555;
+            font-weight: 700;
+        }
+
+        .check-item {
+            margin-bottom: 8px;
+            opacity: 0;
+        }
+
+        .check-item.active {
+            opacity: 1;
+            color: #27ae60;
         }
 
         /* Animations */
-        @keyframes slideUpFade {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
         }
-
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 10px 20px rgba(225, 177, 44, 0.4); }
-            50% { transform: scale(1.04); box-shadow: 0 15px 30px rgba(225, 177, 44, 0.6); }
-            100% { transform: scale(1); box-shadow: 0 10px 20px rgba(225, 177, 44, 0.4); }
+        @keyframes pulse-bg {
+            0%, 100% { background: #fff3cd; }
+            50% { background: #ffe8a1; }
         }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        @keyframes button-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-
-        /* Media Queries for smaller phones */
-        @media (max-height: 700px) {
-            h1 { font-size: 1.7rem; }
-            .gift-box-container { margin: 1rem 0 1.5rem 0; }
-            .gift-svg { width: 110px; }
-            .cta-btn { font-size: 1.1rem; padding: 1rem; }
-            .landing-container { padding: 1.5rem; }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .footer-text {
+            font-size: 11px;
+            color: #999;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <canvas id="confetti"></canvas>
+    <div class="main-card">
+        <!-- STEP 1: The Hook & Zip Input -->
+        <div id="step1">
+            <div class="alert-bar">⚠️ Only 14 boxes left in your area today!</div>
+            
+            <h1>FREE <span>SURPRISE BOX</span></h1>
+            <p class="subtitle">Complete the quick check to claim yours.</p>
 
-    <div class="landing-container">
-        <div class="scarcity-badge">🔥 High Demand: Only 14 Boxes Left!</div>
-        
-        <h1>FREE <span>SURPRISE SAMPLES BOX</span></h1>
-        <p class="subtitle">Available Now!</p>
-
-        <div class="gift-box-container">
-            <!-- Custom Teal & Gold Gift Box SVG matching the original design -->
             <svg class="gift-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                <!-- Shadow -->
                 <ellipse cx="50" cy="92" rx="35" ry="6" fill="rgba(0,0,0,0.1)"/>
-                <!-- Box Base -->
                 <path d="M20,40 L80,40 L75,85 L25,85 Z" fill="#3A8A96"/>
                 <path d="M20,40 L50,45 L80,40 L75,85 L50,90 L25,85 Z" fill="#2E707A"/>
                 <path d="M50,45 L80,40 L75,85 L50,90 Z" fill="#255E68"/>
-                <!-- Vertical Ribbon -->
                 <polygon points="45,44 55,44 53,89 47,89" fill="#F1C40F"/>
-                <!-- Lid Base -->
                 <polygon points="15,25 85,25 88,40 12,40" fill="#429EAD"/>
                 <polygon points="12,40 88,40 88,43 12,43" fill="#2E707A"/>
-                <!-- Horizontal Ribbon on Lid -->
                 <polygon points="43,25 57,25 58,43 42,43" fill="#F1C40F"/>
                 <polygon points="13,32 87,32 87,36 13,36" fill="#F39C12"/>
-                <!-- Bow -->
                 <path d="M50,25 C40,10 25,15 35,25 Z" fill="#F1C40F"/>
                 <path d="M50,25 C60,10 75,15 65,25 Z" fill="#F1C40F"/>
                 <circle cx="50" cy="25" r="5" fill="#E67E22"/>
             </svg>
+
+            <div class="input-group">
+                <label class="input-label">Enter Zip Code to Check Eligibility:</label>
+                <!-- Using type="tel" forces the numeric keypad on mobile -->
+                <input type="tel" id="zipInput" placeholder="e.g. 90210" maxlength="5" autocomplete="postal-code">
+            </div>
+
+            <button class="cta-btn" onclick="startCheck()">CHECK AVAILABILITY</button>
+            
+            <p class="footer-text">Limit 1 per household. US Residents only.</p>
         </div>
 
-        <!-- The Affiliate Link from the image -->
-        <a href="https://www.af9m8trk.com/QLJ11S9T/XSE11VGQ/" class="cta-btn">
-            Claim Your Box Now
-        </a>
-
-        <div class="secure-text">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-            </svg>
-            100% Secure & Direct Link
+        <!-- STEP 2: The Fake Processing/Verification Screen -->
+        <div id="step2">
+            <div class="spinner"></div>
+            <div class="processing-text" id="statusHeader">Checking Inventory...</div>
+            
+            <div class="check-list">
+                <div class="check-item" id="chk1">✔️ Validating Location...</div>
+                <div class="check-item" id="chk2">✔️ Checking Stock...</div>
+                <div class="check-item" id="chk3">✔️ Box Reserved!</div>
+            </div>
         </div>
     </div>
 
-    <!-- Lightweight Confetti Animation Script -->
     <script>
-        const canvas = document.getElementById('confetti');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // Only allow numbers in the input field
+        document.getElementById('zipInput').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
 
-        let particles = [];
-        const colors = ['#d63031', '#fbc531', '#0984e3', '#00b894', '#fd79a8'];
-
-        function createConfetti() {
-            for (let i = 0; i < 70; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height - canvas.height,
-                    w: Math.random() * 10 + 5,
-                    h: Math.random() * 10 + 5,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    speed: Math.random() * 3 + 2,
-                    angle: Math.random() * 360,
-                    spin: Math.random() * 0.2 - 0.1
-                });
+        function startCheck() {
+            const zip = document.getElementById('zipInput').value;
+            
+            // Validate it has exactly 5 digits (Standard US Zip)
+            if(zip.length < 5) {
+                alert("Please enter a valid 5-digit Zip Code.");
+                return;
             }
+
+            // Hide Step 1, Show Step 2
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+
+            // Simulate the processing logic for psychological buy-in
+            setTimeout(() => { 
+                document.getElementById('chk1').classList.add('active'); 
+            }, 800);
+
+            setTimeout(() => { 
+                document.getElementById('chk2').classList.add('active'); 
+            }, 1800);
+
+            setTimeout(() => { 
+                document.getElementById('chk3').classList.add('active'); 
+                document.getElementById('statusHeader').innerText = "SUCCESS! Redirecting...";
+                document.getElementById('statusHeader').style.color = "#27ae60";
+                document.querySelector('.spinner').style.borderColor = "#27ae60";
+                document.querySelector('.spinner').style.borderTopColor = "#2ecc71";
+            }, 2800);
+
+            // Redirect to the affiliate link
+            setTimeout(() => { 
+                window.location.href = "https://www.af9m8trk.com/QLJ11S9T/XSE11VGQ/"; 
+            }, 4000);
         }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, index) => {
-                p.y += p.speed;
-                p.angle += p.spin;
-                
-                ctx.save();
-                ctx.translate(p.x, p.y);
-                ctx.rotate(p.angle);
-                ctx.fillStyle = p.color;
-                ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
-                ctx.restore();
-
-                if (p.y > canvas.height) {
-                    particles.splice(index, 1);
-                }
-            });
-            if(particles.length > 0) {
-                requestAnimationFrame(draw);
-            }
-        }
-
-        window.onload = () => {
-            createConfetti();
-            draw();
-        };
-
-        window.onresize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
     </script>
 </body>
 </html>
